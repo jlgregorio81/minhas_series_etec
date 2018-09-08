@@ -1,6 +1,8 @@
 <?php
 
 use app\view\home\Home;
+use app\model\Genero;
+use app\model\Serie;
 
 require_once('autoload.php');
 
@@ -17,7 +19,7 @@ require_once('autoload.php');
 //sem informar o id no construtor: inserção
 $gen = new Genero(null,'Aventura');
 $gen->persistir();
-*/
+ */
 
 //..informando o id no construtor: atualização
 //$gen = new Genero(21,'Ficção Científica');
@@ -48,3 +50,27 @@ $gen->persistir();
 
 //..invoca o método show
 //$genView->show();
+
+/*
+$genero = (new Genero())->recuperarPorId(24);
+
+$serie = new Serie(null, 'Death Note', 1, 2012, 2012, $genero, 'teste dois');
+
+try {
+    $serie->persistir();
+} catch (\Exception $ex) {
+    echo "erro: {$ex->getMessage()}";
+}
+
+*/
+
+/*
+$serie = (new Serie())->recuperarPorId(6);
+
+var_dump($serie);
+
+*/
+
+$series = (new Serie())->listar(null,null,'genero,nome');
+
+var_dump($series);
